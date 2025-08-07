@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎸 Cifras</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>🎶 Lista de Cifras</h1>
+
+    <form method="POST">
+        <input type="text" name="busca" placeholder="Buscar por título ou artista">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <ul>
+        {% for musica in musicas %}
+            <li>
+                <strong>{{ musica.titulo }}</strong> - {{ musica.artista }}
+                [<a href="{{ url_for('cifra', nome_arquivo=musica.arquivo) }}">Ver cifra</a>]
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('upload') }}">➕ Adicionar nova cifra</a>
+</body>
+</html>
